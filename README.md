@@ -9,6 +9,7 @@
 - Form Validation
 - useRef hook
 - Create SignUp User Account in Firebase
+- ReduxJS ToolKit
 
 # Features
 
