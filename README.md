@@ -10,6 +10,9 @@
 - useRef hook
 - Create SignUp User Account in Firebase
 - ReduxJS ToolKit
+- created Redux Store with userSlice
+- implemented signout feature
+- Update Profile
 
 # Features
 

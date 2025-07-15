@@ -1,12 +1,47 @@
 import React from "react";
+import { signOut } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const user = useSelector((store) => store.user);
+
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        navigate("/"); // Redirect to login page after sign out
+      })
+      .catch((error) => {
+        // Handle error if needed
+        navigate("/error");
+      });
+  };
+
   return (
-    <div className="absolute w-48 pt-2 ml-40 z-10">
+    <div className="flex items-center justify-between px-8 py-4 bg-gradient-to-b from-black to-transparent w-full fixed top-0 left-0 z-20">
       <img
-        src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production/consent/87b6a5c0-0104-4e96-a291-092c11350111/01938dc4-59b3-7bbc-b635-c4131030e85f/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-        alt="Netfli Logo"
+        className="w-40"
+        src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+        alt="Netflix Logo"
       />
+
+      {user && (
+        <div className="flex gap-4">
+          <img
+            src="https://i.pinimg.com/564x/1b/a2/e6/1ba2e6d1d4874546c70c91f1024e17fb.jpg"
+            alt="usericon"
+            className="w-12 h-12"
+          />
+          <button
+            onClick={handleSignOut}
+            className="bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800 font-semibold"
+          >
+            Sign Out
+          </button>
+        </div>
+      )}
     </div>
   );
 };
