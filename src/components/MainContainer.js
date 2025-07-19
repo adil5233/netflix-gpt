@@ -8,7 +8,9 @@ const MainContainer = () => {
 
   if (!movies) return; // this known as early return
 
-  const mainMovie = movies[0];
+  // Generate a random index between 0 and 19
+  const randomIndex = Math.floor(Math.random() * 20);
+  const mainMovie = movies[randomIndex];
   console.log(mainMovie);
 
   const { original_title, overview, id } = mainMovie;
