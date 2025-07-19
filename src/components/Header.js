@@ -6,11 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO, USER_AVATAR } from "../utils/constants";
-
+import { taggleGptSearchView } from "../utils/gptSlice";
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
+
+  const handleGptSearchClick = () => {
+    dispatch(taggleGptSearchView());
+  };
 
   const handleSignOut = () => {
     signOut(auth)
@@ -42,6 +46,12 @@ const Header = () => {
 
       {user && (
         <div className="flex gap-4">
+          <button
+            onClick={handleGptSearchClick}
+            className="py-2 px-4 text-white rounded bg-blue-700 hover:bg-blue-800 font-semibold"
+          >
+            GPT Search
+          </button>
           <img src={USER_AVATAR} alt="usericon" className="w-12 h-12" />
           <button
             onClick={handleSignOut}
