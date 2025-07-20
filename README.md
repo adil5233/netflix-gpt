@@ -14,6 +14,9 @@
 - implemented signout feature
 - Update Profile
 - Fetch Movies from TMDB
+- GPT Search Page
+- GPT Search Bar
+- _Multi-language Feture in our App_
 
 # Features
 
