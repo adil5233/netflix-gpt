@@ -12,6 +12,7 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
   const handleGptSearchClick = () => {
     dispatch(taggleGptSearchView());
@@ -51,21 +52,23 @@ const Header = () => {
 
       {user && (
         <div className="flex gap-4">
-          <select
-            className="px-2  rounded bg-gray-900 text-white m-2"
-            onChange={handleLanguageChange}
-          >
-            {SUPPORTED_LANGUAGES.map((lang) => (
-              <option key={lang.identifier} value={lang.identifier}>
-                {lang.name}
-              </option>
-            ))}
-          </select>
+          {showGptSearch && (
+            <select
+              className="px-2  rounded bg-gray-900 text-white m-2"
+              onChange={handleLanguageChange}
+            >
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
           <button
             onClick={handleGptSearchClick}
             className="py-2 px-4 text-white rounded bg-blue-700 hover:bg-blue-800 font-semibold"
           >
-            GPT Search
+            {showGptSearch ? "Home" : "GPT Search"}
           </button>
           <img src={USER_AVATAR} alt="usericon" className="w-12 h-12" />
           <button
