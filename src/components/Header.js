@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../utils/userSlice";
-import { LOGO, USER_AVATAR } from "../utils/constants";
+import { LOGO, SUPPORTED_LANGUAGES, USER_AVATAR } from "../utils/constants";
 import { taggleGptSearchView } from "../utils/gptSlice";
+import { changeLanguage } from "../utils/configSlice";
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
@@ -14,6 +15,10 @@ const Header = () => {
 
   const handleGptSearchClick = () => {
     dispatch(taggleGptSearchView());
+  };
+
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
   };
 
   const handleSignOut = () => {
@@ -46,6 +51,16 @@ const Header = () => {
 
       {user && (
         <div className="flex gap-4">
+          <select
+            className="px-2  rounded bg-gray-900 text-white m-2"
+            onChange={handleLanguageChange}
+          >
+            {SUPPORTED_LANGUAGES.map((lang) => (
+              <option key={lang.identifier} value={lang.identifier}>
+                {lang.name}
+              </option>
+            ))}
+          </select>
           <button
             onClick={handleGptSearchClick}
             className="py-2 px-4 text-white rounded bg-blue-700 hover:bg-blue-800 font-semibold"
