@@ -48,7 +48,9 @@ const Header = () => {
 
   return (
     <div className="flex flex-row items-center justify-between px-4 md:px-8 py-1 md:py-4 bg-gradient-to-b from-black to-transparent w-full fixed top-0 left-0 z-30">
-      <img className="w-20 md:w-40" src={LOGO} alt="Netflix Logo" />
+      {!showGptSearch && (
+        <img className="w-20 md:w-40" src={LOGO} alt="Netflix Logo" />
+      )}
 
       {user && (
         <div className="flex gap-4 items-center">
@@ -70,11 +72,13 @@ const Header = () => {
           >
             {showGptSearch ? "Home" : "GPT Search"}
           </button>
-          <img
-            src={USER_AVATAR}
-            alt="usericon"
-            className="w-10 h-10 md:w-12 md:h-12"
-          />
+          {!showGptSearch && (
+            <img
+              src={USER_AVATAR}
+              alt="usericon"
+              className="w-10 h-10 md:w-12 md:h-12"
+            />
+          )}
           <button
             onClick={handleSignOut}
             className="bg-red-700 text-white py-1 px-2 md:px-4 md:py-2 rounded hover:bg-red-800 font-semibold"
