@@ -5,12 +5,14 @@ import Background from "./Background";
 
 const GptSearchPage = () => {
   return (
-    <div className="relative">
-      <div className="relative z-10">
+    <div>
+      <div className="fixed -z-10">
+        <Background />
+      </div>
+      <div>
         <GptSearchBar />
         <GptMovieSuggestions />
       </div>
-      <Background />
     </div>
   );
 };

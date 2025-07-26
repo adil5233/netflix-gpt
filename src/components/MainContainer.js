@@ -18,7 +18,7 @@ const MainContainer = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden">
       <VideoTitle title={original_title} overview={overview} />
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute -top-[21rem] md:top-0 inset-0 w-full h-1 md:h-screen">
         <VideoBackground movieId={id} />
       </div>
     </div>

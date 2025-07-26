@@ -9,9 +9,9 @@ const VideoBackground = ({ movieId }) => {
   if (!trailer) return null;
 
   return (
-    <div className="w-full aspect-video relative overflow-hidden">
+    <div className="w-full h-screen md:h-screen relative overflow-hidden bg-black">
       <iframe
-        className="w-full h-full absolute top-0 left-0 pointer-events-none scale-125"
+        className="w-full h-full absolute top-0 left-0 pointer-events-none scale-125 object-cover"
         src={`https://www.youtube.com/embed/${trailer?.key}?autoplay=1&mute=1&loop=1&playlist=${trailer?.key}&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&fs=0&cc_load_policy=0&start=0&end=0`}
         title="Netflix Movie Trailer"
         allow="autoplay; encrypted-media"
