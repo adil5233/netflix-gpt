@@ -23,8 +23,6 @@ const GptSearchBar = () => {
   };
 
   const handleGptSearchClick = async () => {
-    console.log(searchText.current.value);
-
     //Make an API call to GPT and get Movies Results
     const gptQuery =
       "Act as a Movie recommedation system and suggest some movies for the query : " +
@@ -40,31 +38,29 @@ const GptSearchBar = () => {
     }
 
     const gptMovies = gptResults?.choices[0]?.message?.content.split(",");
-    console.log(gptMovies);
 
     const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
     const tmdbResult = await Promise.all(promiseArray); //> [promise,promise,promise,promise,promise,]
-    console.log(tmdbResult);
     dispatch(
       addGptMovieResult({ movieNames: gptMovies, movieResults: tmdbResult })
     );
   };
 
   return (
-    <div className="pt-[35%] md:pt-[10%] flex justify-center">
+    <div className="pt-24 md:pt-32 px-4 flex justify-center">
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-full md:w-1/2 md:grid md:grid-cols-12 bg-black flex flex-col"
+        className="w-full md:w-1/2 grid grid-cols-1 md:grid-cols-12 gap-3 bg-black/80 rounded-lg p-4"
       >
         <input
           ref={searchText}
           type="text"
-          className="p-4 m-4 md:col-span-9"
+          className="w-full p-3 md:p-4 rounded-sm md:col-span-9"
           placeholder={lang[langKey].gptSearchPlaceHolder}
         />
         <button
           onClick={handleGptSearchClick}
-          className="md:col-span-3 m-4 py-2 px-4 rounded-sm bg-red-700 text-white"
+          className="md:col-span-3 py-3 px-4 rounded-sm bg-red-700 hover:bg-red-800 text-white font-semibold"
         >
           {lang[langKey].search}
         </button>

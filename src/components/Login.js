@@ -38,9 +38,8 @@ const Login = () => {
         email.current.value,
         password.current.value
       )
-        .then((userCredential) => {
+        .then(() => {
           // Signed up
-          const user = userCredential.user;
           updateProfile(auth.currentUser, {
             displayName: name.current.value,
           })
@@ -53,9 +52,6 @@ const Login = () => {
             .catch((error) => {
               setErrorMessage(error.message);
             });
-          console.log(user);
-
-          // ...
         })
         .catch((error) => {
           const errorCode = error.code;

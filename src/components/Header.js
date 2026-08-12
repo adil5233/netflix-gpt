@@ -53,10 +53,10 @@ const Header = () => {
       )}
 
       {user && (
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-2 md:gap-4 items-center">
           {showGptSearch && (
             <select
-              className="px-2 rounded bg-gray-900 text-white m-2"
+              className="px-1 md:px-2 py-1 text-sm md:text-base rounded bg-gray-900 text-white shrink-0"
               onChange={handleLanguageChange}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
@@ -68,7 +68,7 @@ const Header = () => {
           )}
           <button
             onClick={handleGptSearchClick}
-            className="py-1 px-2 mt-1 md:py-2 md:px-4 text-white rounded bg-blue-700 hover:bg-blue-800 font-semibold"
+            className="py-1 px-2 md:py-2 md:px-4 text-sm md:text-base text-white rounded bg-blue-700 hover:bg-blue-800 font-semibold whitespace-nowrap shrink-0"
           >
             {showGptSearch ? "Home" : "GPT Search"}
           </button>
@@ -76,12 +76,12 @@ const Header = () => {
             <img
               src={USER_AVATAR}
               alt="usericon"
-              className="w-10 h-10 md:w-12 md:h-12"
+              className="w-8 h-8 md:w-12 md:h-12 rounded shrink-0"
             />
           )}
           <button
             onClick={handleSignOut}
-            className="bg-red-700 text-white py-1 px-2 md:px-4 md:py-2 rounded hover:bg-red-800 font-semibold"
+            className="bg-red-700 text-white py-1 px-2 md:px-4 md:py-2 text-sm md:text-base rounded hover:bg-red-800 font-semibold whitespace-nowrap shrink-0"
           >
             Sign Out
           </button>

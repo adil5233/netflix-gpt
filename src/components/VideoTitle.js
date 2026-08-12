@@ -3,11 +3,11 @@ import { Play, Info } from "lucide-react";
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className="relative z-20 px-4 md:px-12 lg:px-16 pt-[2rem] md:pt-40 lg:pt-48 max-w-xl lg:max-w-2xl">
-      <h1 className="text-2xl md:text-4xl lg:text-6xl xl:text-7xl font-bold text-white pt-[2.75rem] mb-4 lg:mb-6 leading-tight drop-shadow-2xl">
+    <div className="px-4 md:px-12 lg:px-16 max-w-xl lg:max-w-2xl pointer-events-auto">
+      <h1 className="text-2xl md:text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 lg:mb-6 leading-tight drop-shadow-2xl">
         {title}
       </h1>
-      <p className="text-opacity-0 md:text-opacity-100 text-sm md:text-base lg:text-lg xl:text-xl text-white -mb-[5rem] lg:mb-8 leading-relaxed opacity-90 line-clamp-3 drop-shadow-lg max-w-md lg:max-w-lg">
+      <p className="hidden md:block md:text-base lg:text-lg xl:text-xl text-white mb-6 lg:mb-8 leading-relaxed opacity-90 line-clamp-3 drop-shadow-lg max-w-md lg:max-w-lg">
         {overview}
       </p>
       <div className="flex flex-row gap-3">

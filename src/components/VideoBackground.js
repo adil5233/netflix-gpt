@@ -19,7 +19,7 @@ const VideoBackground = ({ movieId }) => {
   if (!trailer) return null;
 
   return (
-    <div className="w-full h-screen md:h-screen relative overflow-hidden bg-black">
+    <div className="w-full h-full relative overflow-hidden bg-black">
       <iframe
         className="w-full h-full absolute top-0 left-0 pointer-events-none scale-125 object-cover"
         src={`https://www.youtube.com/embed/${trailer?.key}?autoplay=1&mute=${
@@ -41,11 +41,12 @@ const VideoBackground = ({ movieId }) => {
       {/* Mobile-specific top gradient */}
       <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-black/80 to-transparent md:hidden pointer-events-none" />
 
-      {/* Desktop mute/unmute button */}
+      {/* Mute/unmute button, anchored to the hero's bottom-right on every size */}
 
       <button
         onClick={toggleMute}
-        className="absolute bottom-80 md:bottom-32 right-8 w-12 h-12 bg-black bg-opacity-50 hover:bg-opacity-70 text-white rounded-full flex items-center justify-center transition-all duration-200 z-20 border border-white/20"
+        aria-label={isMuted ? "Unmute trailer" : "Mute trailer"}
+        className="absolute bottom-4 right-4 md:bottom-24 md:right-8 w-10 h-10 md:w-12 md:h-12 bg-black bg-opacity-50 hover:bg-opacity-70 text-white rounded-full flex items-center justify-center transition-all duration-200 z-30 border border-white/20"
       >
         {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
       </button>
