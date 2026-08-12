@@ -44,7 +44,7 @@ const Header = () => {
     });
     // Unsubscribe when components unmount
     return () => unsubscribe();
-  }, []);
+  }, [dispatch, navigate]);
 
   return (
     <div className="flex flex-row items-center justify-between px-4 md:px-8 py-1 md:py-4 bg-gradient-to-b from-black to-transparent w-full fixed top-0 left-0 z-30">

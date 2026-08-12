@@ -70,10 +70,8 @@ const Login = () => {
         email.current.value,
         password.current.value
       )
-        .then((userCredential) => {
+        .then(() => {
           // Signed in
-          const user = userCredential.user;
-          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
