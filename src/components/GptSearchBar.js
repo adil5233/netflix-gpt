@@ -31,7 +31,7 @@ const GptSearchBar = () => {
       searchText.current.value +
       ". only give me names of 5 movies, comma seperated. like the example result given ahead. Example Result: Gadar, Sholay, Don, Kuch Kuch Hota hai, Golmaal";
     const gptResults = await openai.chat.completions.create({
-      model: "deepseek/deepseek-chat-v3-0324:free",
+      model: "liquid/lfm-2.5-2.6b:free",
       messages: [{ role: "user", content: gptQuery }],
     });
 
